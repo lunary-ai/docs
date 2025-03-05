@@ -10,12 +10,12 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "http://api.lunary.ai"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "bearerAuth": {}
     }
   ],
   "paths": {
