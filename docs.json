@@ -8,7 +8,9 @@
     "dark": "#15803D"
   },
   "api": {
-    "playground": "https:/api.lunary.ai"
+    "playground": {
+      "display": "interactive"
+    }
   },
   "favicon": "/favicon.png",
   "navigation": {
