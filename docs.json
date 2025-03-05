@@ -17,19 +17,10 @@
           {
             "group": "Getting Started",
             "pages": ["api-reference/introduction"]
-          },
+          }
         ]
       }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Getting Started",
-          "page": "api-reference/introduction"
-          "icon": "book-open-cover"
-        }
-      ]
-    }
   },
   "logo": {
     "light": "/logo/light.svg",
