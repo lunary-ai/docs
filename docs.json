@@ -10,6 +10,9 @@
   "api": {
     "playground": {
       "display": "interactive"
+    },
+    "examples": {
+      "languages": ["curl"]
     }
   },
   "favicon": "/favicon.png",
