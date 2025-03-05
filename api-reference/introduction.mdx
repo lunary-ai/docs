@@ -1,33 +1,56 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: API
+sidebar: Getting Started
+description: Overview of the Lunary.ai API.
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+# API Reference
 
-## Welcome
+Use the Lunary API to access programmatically access your data.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## Base URL
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+The base URL for the Lunary Cloud API is:
+
+```bash
+https://api.lunary.ai/v1
+```
+
+In the case of self-hosting, replace the host with your backend's URL.
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+You'll need to authenticate your requests to access any of the endpoints in the data API.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+To obtain your private API key, visit the [Settings Page](https://app.lunary.ai/settings). Each project has its own private and public API key.
+
+The private API key can be passed in the Authorization header as a Bearer token.
+
+Some endpoints, such as the ingestion endpoint, can be accessed with the public key.
+
+### Sample request
+
+```bash
+curl --get 'https://api.lunary.ai/v1/runs' \
+  -H "Authorization: Bearer <api_key>" \
+  -d "limit=10" \
+  -d "page=0" \
+  -d "order=asc" \
+  -d "type=llm" 
 ```
+
+## Rate Limiting
+
+The API employs a sliding window rate limiter. The current rate limit for this endpoint is set at 30 requests per second.
+
+## Error Handling
+
+Standard HTTP status codes are used for error handling:
+
+* `429`: Rate limit exceeded.
+
+* `422`: Missing or incorrect parameters.
+
+* `403`: Unauthorized access .
+
+* `50X`: Internal server error.
