@@ -4,8 +4,8 @@
   "name": "Lunary API Reference",
   "colors": {
     "primary": "#099DFF",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "light": "#099DFF",
+    "dark": "#099DFF"
   },
   "api": {
     "playground": {
