@@ -27,10 +27,6 @@
           {
             "group": "Getting Started",
             "pages": ["api-reference/introduction"]
-          },
-          {
-            "group": "User Endpoints",
-            "pages": ["api-reference/users"]
           }
         ]
       }
