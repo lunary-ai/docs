@@ -21,6 +21,16 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Lunary",
+            "pages": ["documentation/index", "documentation/github"]
+          }
+        ]
+      },
+
+      {
         "openapi": "https://api.lunary.ai/v1/openapi",
         "tab": "API Reference",
         "groups": [
