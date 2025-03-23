@@ -25,7 +25,39 @@
         "groups": [
           {
             "group": "Lunary",
-            "pages": ["documentation/index", "documentation/github"]
+            "pages": ["docs/lunary/index", "docs/lunary/github"]
+          },
+          {
+            "group": "Integrations",
+            "pages": []
+          },
+          {
+            "group": "Features",
+            "pages": []
+          },
+          {
+            "group": "More",
+            "pages": [
+              {
+                "group": "Security",
+                "icon": "shield",
+                "pages": [
+                  "docs/more/security/introduction",
+                  "docs/more/security/CCPA",
+                  "docs/more/security/GDPR"
+                ]
+              },
+              "docs/more/concepts",
+              {
+                "group": "Self-Hosting",
+                "icon": "database",
+                "pages": [
+                  "docs/more/self-hosting/docker",
+                  "docs/more/self-hosting/docker-compose",
+                  "docs/more/self-hosting/kubernetes"
+                ]
+              }
+            ]
           }
         ]
       },

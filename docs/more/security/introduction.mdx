@@ -1,0 +1,96 @@
+---
+title: "Data Security"
+sidebarTitle: "Introduction"
+---
+
+We take data security extremely seriously. A number of measures have been implemented to ensure the safety and security of your data.
+
+## Security Measures
+
+### Technical
+
+When utilizing Lunary Cloud, we prioritize the security of your data through several key technical measures:
+
+- **Encryption in Transit:** All data transmitted to and from the Lunary Cloud platform, as well as data communicated via our SDKs, is encrypted using HTTPS/TLS. This ensures that your data remains secure during its transmission over the internet.
+
+- **Encryption at Rest:** On our production servers, we employ encryption at rest to protect your data. This means that all data stored on our servers is encrypted, providing an additional layer of security against unauthorized access.
+
+- **Bug Bounties:** We actively participate in bug bounty programs, inviting security researchers to identify and report vulnerabilities in our system. This proactive approach allows us to continually enhance our security measures and protect your data against emerging threats.
+
+- **Datacenter Security**: We use Hetzner as our server provider. Hetzner has implemented robust security measures for their data centers, including: high-security fencing with video monitoring, electronic access control via transponder key or card, 24/7 surveillance across all critical areas, diesel generator for power backup and advanced fire protection systems. Hetzner is DIN ISO/IEC 27001 certified.
+
+### Organizational
+
+Organizational measures are a critical component of our security framework, ensuring that our operations and employee behaviors align with our high standards for data protection. These measures include:
+
+- **Security Training:** All employees undergo regular security awareness training to understand the latest threats and best practices for data protection.
+- **Access Control:** Access to sensitive data is strictly controlled and limited to authorized personnel only, based on their role within the organization.
+- **Data Privacy Policies:** We have comprehensive data privacy policies in place, which are regularly reviewed and updated to comply with current data protection laws.
+- **Incident Response Plan:** A well-defined incident response plan is in place, allowing us to quickly address any security breaches and mitigate their impact.
+- **Vendor Management:** We carefully assess and monitor all third-party vendors to ensure they meet our security standards, particularly those who handle or have access to our data.
+
+### SOC 2 and ISO27001
+
+Lunary is certified as SOC 2 Type 2 and ISO27001:2022 compliant, following external audits. Audit reports are available to Scale and Enterprise customers upon request.
+
+### Policies
+
+To support with compliance, we have established numerous policies. All team members are required to review these policies and complete security training and background checks as part of their onboarding process.
+
+The following policies are available for review upon request:
+
+- Physical Security Policy
+- Access Control and Termination Policy
+- Risk Assessment and Treatment Policy
+- Incident Response Plan
+- Secure Development Policy
+- Vulnerability and Patch Management Policy
+- Internal Control Policy
+- Network Security Policy
+- Data retention and Disposal Policy
+- Data backup policy
+- Business Continuity and Disaster Recovery Plan
+- Third Party Risk Management policy
+
+These policies are also pertinent to GDPR compliance (see below).
+
+## GDPR
+
+Customers can use Lunary in one of two ways:
+
+- Lunary Cloud
+- Self-hosting a Lunary instance
+
+When using Lunary Cloud, Lunary acts as the Data Processor and the customer is the Data Controller. In this scenario, we have certain GDPR obligations to the customer's end users.
+
+When self-hosting a Lunary instance, the customer is both the Data Processor and the Data Controller, as they are responsible for their instance. Since we do not have access to any user data in this case, we do not have specific GDPR obligations to the customer's end users.
+
+Read our [GDPR compliance guide](/docs/todo) for more information.
+
+### Lunary's Obligations as a Data Processor
+
+We have examined our architecture, data flows, and agreements to ensure that our platform is GDPR compliant. Lunary Cloud does not interact directly with our customers’ end users, nor does it automatically collect personal data. However, our customers may collect and send personal data to Lunary for processing.
+
+Lunary does not require personally identifiable information or personal data to enable LLM observability.
+
+## CCPA
+
+Under the California Consumer Privacy Act (CCPA), Lunary serves as a Service Provider to Lunary Cloud customers only. This role is similar to the Processor role under GDPR. Our Privacy Policy includes a CCPA Addendum.
+
+We equip all Lunary customers with the tools necessary to comply with their end users' requests under CCPA, including data deletion. We provide detailed guidance for our customers on how to use Lunary in a CCPA-compliant manner in our docs.
+
+We process data collected by our customers from end-users and enable them to understand usage metrics of their products. We do not access customer end-user data unless directed by a customer, and we never sell customer data to third parties. We do not have access to data collected by customers who self-host Lunary from their end-users, unless they grant us access to their instance.
+
+Read our [CCPA compliance guide](/docs/todo) for more information.
+
+## HIPAA
+
+By [self-hosting Lunary](/docs/todo) on your own infrastructure, you maintain full control of your data, making it an ideal solution for LLM observability in healthcare settings.
+
+Since you retain full control, there is no need to sign a Business Associate Agreement with us.
+
+Lunary Cloud is not suitable for HIPAA-compliant data collection.
+
+## Security Contact
+
+Please reach out at `security@lunary.ai` for any security-related question.
