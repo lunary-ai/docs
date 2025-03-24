@@ -29,7 +29,39 @@
           },
           {
             "group": "Integrations",
-            "pages": []
+            "pages": [
+              {
+                "group": "Python",
+                "icon": "python",
+                "pages": [
+                  "/docs/integrations/python/installation",
+                  "/docs/integrations/python/openai",
+                  "/docs/integrations/python/azure-openai",
+                  "/docs/integrations/python/manual",
+                  "/docs/integrations/python/reference"
+                ]
+              },
+              {
+                "group": "Javascript",
+                "icon": "js",
+                "pages": [
+                  "/docs/integrations/javascript/installation",
+                  "/docs/integrations/javascript/openai",
+                  "/docs/integrations/javascript/anthropic",
+                  "/docs/integrations/javascript/azure-openai",
+                  "/docs/integrations/javascript/react",
+                  "/docs/integrations/javascript/custom-model",
+                  "/docs/integrations/javascript/manual",
+                  "/docs/integrations/javascript/serverless"
+                ]
+              },
+              "/docs/integrations/langchain",
+              "/docs/integrations/ollama",
+              "/docs/integrations/litellm",
+              "/docs/integrations/ibm",
+              "/docs/integrations/flowise",
+              "docs/integrations/custom"
+            ]
           },
           {
             "group": "Features",

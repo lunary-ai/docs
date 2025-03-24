@@ -1,0 +1,49 @@
+---
+title: "JS Azure OpenAI integration"
+sidebarTitle: Azure OpenAI
+---
+
+Our JS SDK includes automatic integration with Azure OpenAI.
+
+<Steps>
+<Step n='1' title="Setup the SDK">
+```bash
+npm i openai lunary 
+```
+</Step>
+
+<Step n='2' title='Monitor AzureOpenAI'>
+
+With our SDKs, tracking AzureOpenAI calls is super simple.
+
+```js
+import { AzureOpenAI } from "openai";
+import { monitorOpenAI } from "lunary/openai";
+
+const API_VERSION = process.env.OPENAI_API_VERSION;
+const API_KEY = process.env.AZURE_OPENAI_API_KEY;
+const AZURE_ENDPOINT = process.env.AZURE_OPENAI_ENDPOINT;
+const RESOURCE_NAME = process.env.AZURE_OPENAI_RESOURCE_NAME;
+
+const client = monitorOpenAI(
+  new AzureOpenAI({
+    apiVersion: API_VERSION,
+    endpoint: AZURE_ENDPOINT,
+    apiKey: API_KEY,
+  })
+);
+
+async function main() {
+  const chatCompletion = await client.chat.completions.create({
+    model: RESOURCE_NAME,
+    messages: [{ role: "user", content: "Say this is a test" }],
+  });
+  console.log(chatCompletion.choices[0].message.content);
+}
+
+main();
+
+```
+
+</Step>
+</Steps>

@@ -1,0 +1,81 @@
+---
+title: "Manual Usage"
+---
+
+
+If your application requires more flexibility and you can't use the decorators, you can use the `track_event` method directly.
+
+Here's a brief overview of how to use it:
+
+```py
+import lunary
+
+lunary.track_event(
+    run_type,
+    event_name,
+    run_id,
+    parent_run_id=None,
+    name=None,
+    input=None,
+    output=None,
+    error=None,
+    token_usage=None,
+    user_id=None,
+    user_props=None,
+    tags=None,
+    params=None,
+    metadata=None,
+)
+```
+
+The parameters are as follows:
+
+- run_type: The type of the run. It can be "llm", "agent", "tool", "chain" or "embed".
+- event_name: The event. It can be "start", "end", or "error".
+- run_id: A unique identifier for the run.
+- parent_run_id: (Optional) The unique identifier of the parent run in case of nested run.
+- name: (Optional) The name of the model, agent or chain.
+- input: (Optional) The input data for the event. Can be any JSON-safe value.
+- output: (Optional) The output data for the event. Can be any JSON-safe value.
+- error: (Optional) Any error information.
+- token_usage: (Optional) The number of tokens used.
+- user_id: (Optional) The user ID.
+- user_props: (Optional) Any user properties.
+- tags: (Optional) Any tags associated with the event.
+- params: (Optional) The params passed to entity you're tracking (for example, the `temperature` for an LLM call).
+- metadata: (Optional) Any metadata.
+
+
+Here's an example of how to use it:
+
+
+```py
+import uuid
+import lunary
+
+run_id = uuid.uuid4()
+
+def my_tool(input):
+
+  lunary.track_event(
+      run_type="tool",
+      event_name="start",
+      run_id=run_id,
+      name="my_tool",
+      input=input,
+      user_id="123",
+      tags=["tag1", "tag2"],
+  )
+
+  # ...
+  # do something
+  # ...
+
+  lunary.track_event(
+      run_type="tool",
+      event_name="end",
+      run_id=run_id,
+      output={"result": "success"},
+  )
+```
+

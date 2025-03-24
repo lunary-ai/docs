@@ -1,0 +1,74 @@
+---
+title: Python SDK Installation
+sidebarTitle: Installation
+---
+
+Please use Python version 3.10 or higher to ensure compatibility.
+
+```bash
+pip install lunary
+```
+
+## Setup
+
+Add the `LUNARY_PUBLIC_KEY` to your environment variables.
+
+```bash
+export LUNARY_PUBLIC_KEY="0x0"
+```
+
+You can use dotenv to load the environment variables from a `.env` file.
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+## Next steps
+
+TODO
+
+<Menu items={
+  [{
+    title: 'LangChain',
+    description: 'Usage with LangChain.',
+    Icon: IconBox,
+    path: '/docs/integrations/langchain?lang=py',
+  }, {
+    title: 'OpenAI',
+    description: 'Automatically track your OpenAI calls.',
+    Icon: IconBrandOpenai,
+    path: '/docs/py/openai',
+  }, {
+    title: 'User Tracking',
+    description: 'Identify your users.',
+    Icon: IconUsers,
+    path: '/docs/features/users?lang=py',
+  }, {
+    title: 'Tagging',
+    description: 'Segment your queries with tags.',
+    Icon: IconTags,
+    path: '/docs/features/tags?lang=py',
+  }, {
+    title: 'Manual Integration',
+    description: 'Learn how to use track_event()',
+    Icon: IconCode,
+    path: '/docs/py/manual',
+  }, {
+    title: 'Agents & Tools',
+    description: 'Enable traces on custom agents & tools',
+    Icon: IconRobot,
+    path: '/docs/features/observe?lang=py',
+  }, {
+    title: 'API Reference',
+    description: 'Full list of methods and classes.',
+    Icon: IconTerminal,
+    path: '/docs/py/api',
+  }, {
+    title: 'Examples',
+    description: 'Find examples of usage on GitHub.',
+    Icon: IconBrandGithub,
+    path: 'https://github.com/lunary-ai/lunary-py/tree/main/examples',
+  }]
+  }
+/>

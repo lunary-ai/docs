@@ -1,0 +1,122 @@
+---
+title: "JavaScript SDK"
+sidebarTitle: "Installation"
+---
+
+## Installation
+
+The `lunary` module is lightweight and works with Node JS, Deno, Cloudflare Workers, Vercel Edge functions and even Bun.
+
+### Node
+
+```bash
+npm install lunary
+```
+
+<Warning>
+### For Cloudflare Workers
+In your `wrangler.toml` file, make sure to add the Node.js compatibility flag:
+
+```toml
+compatibility_flags = [ "nodejs_compat" ]
+```
+</Warning>
+
+## Setup
+
+Start by importing the `lunary` module:
+
+```js
+import lunary from "lunary"
+```
+
+If you're using in the browser, import like this:
+
+```js
+import lunary from "lunary/browser"
+```
+
+Then initialize the module with your unique app ID.
+
+Option 1: Automatic using environment variables (recommended):
+
+```bash
+LUNARY_PUBLIC_KEY="0x0"
+```
+
+Option 2: Manually using the `.init` method:
+
+```ts
+// Initialize the Lunary module with your unique app ID
+lunary.init({
+  publicKey: "0x0",
+})
+```
+
+The `.init` method accepts the following arguments:
+
+```ts
+{
+  "appId": string, // Your unique app ID obtained from the dashboard
+  "apiUrl": string, // Optional: Use a custom endpoint if you're self-hosting (you can also set LUNARY_API_URL)
+  "verbose": boolean // Optional: Enable verbose logging for debugging
+}
+```
+
+
+TODO
+
+<Menu items={
+  [{
+    title: 'LangChain',
+    description: 'Usage with LangChain JS.',
+    Icon: IconBox,
+    path: '/docs/integrations/langchain?lang=js',
+  }, {
+    title: 'OpenAI',
+    description: 'Automatically track your OpenAI calls.',
+    Icon: IconBrandOpenai,
+    path: '/docs/js/openai',
+  }, {
+    title: 'User Tracking',
+    description: 'Identify your users.',
+    Icon: IconUsers,
+    path: '/docs/features/users?lang=js',
+  }, {
+    title: 'Tagging',
+    description: 'Segment your queries with tags.',
+    Icon: IconTags,
+    path: '/docs/features/tags?lang=js',
+  },  {
+    title: 'Chats',
+    description: 'Record user interactions with your chatbot.',
+    Icon: IconMessages,
+    path: '/docs/features/chats?lang=js',
+  }, {
+    title: 'Manual Integration',
+    description: 'Learn how to use .trackEvent()',
+    Icon: IconCode,
+    path: '/docs/js/manual',
+  },  {
+    title: 'Serverless',
+    description: 'Use with Lambda, Cloudflare Workers, Edge Functions, etc.',
+    Icon: IconLambda,
+    path: '/docs/js/serverless',
+  }, {
+    title: 'Agents & Tools',
+    description: 'Setup tracing by tracking agents & tools',
+    Icon: IconRobot,
+    path: '/docs/features/observe?lang=js',
+  }, {
+    title: 'API Reference',
+    description: 'Full list of methods and classes.',
+    Icon: IconTerminal,
+    path: '/docs/js/api',
+  }, {
+    title: 'Examples',
+    description: 'Find examples of usage on GitHub.',
+    Icon: IconBrandGithub,
+    path: 'https://github.com/lunary-ai/lunary-js/tree/main/examples',
+  }]
+  }
+/>
