@@ -14,7 +14,7 @@ pip install lunary
 Add the `LUNARY_PUBLIC_KEY` to your environment variables.
 
 ```bash
-export LUNARY_PUBLIC_KEY="0x0"
+export LUNARY_PUBLIC_KEY="PUBLIC KEY"
 ```
 
 You can use dotenv to load the environment variables from a `.env` file.
@@ -26,49 +26,45 @@ load_dotenv()
 
 ## Next steps
 
-TODO
-
-<Menu items={
-  [{
-    title: 'LangChain',
-    description: 'Usage with LangChain.',
-    Icon: IconBox,
-    path: '/docs/integrations/langchain?lang=py',
-  }, {
-    title: 'OpenAI',
-    description: 'Automatically track your OpenAI calls.',
-    Icon: IconBrandOpenai,
-    path: '/docs/py/openai',
-  }, {
-    title: 'User Tracking',
-    description: 'Identify your users.',
-    Icon: IconUsers,
-    path: '/docs/features/users?lang=py',
-  }, {
-    title: 'Tagging',
-    description: 'Segment your queries with tags.',
-    Icon: IconTags,
-    path: '/docs/features/tags?lang=py',
-  }, {
-    title: 'Manual Integration',
-    description: 'Learn how to use track_event()',
-    Icon: IconCode,
-    path: '/docs/py/manual',
-  }, {
-    title: 'Agents & Tools',
-    description: 'Enable traces on custom agents & tools',
-    Icon: IconRobot,
-    path: '/docs/features/observe?lang=py',
-  }, {
-    title: 'API Reference',
-    description: 'Full list of methods and classes.',
-    Icon: IconTerminal,
-    path: '/docs/py/api',
-  }, {
-    title: 'Examples',
-    description: 'Find examples of usage on GitHub.',
-    Icon: IconBrandGithub,
-    path: 'https://github.com/lunary-ai/lunary-py/tree/main/examples',
-  }]
-  }
-/>
+<CardGroup cols={2}>
+  <Card title="LangChain" icon="box" href="/docs/integrations/langchain">
+    Usage with LangChain.
+  </Card>
+  <Card
+    title="OpenAI"
+    icon="microchip-ai"
+    href="/docs/integrations/python/openai"
+  >
+    Automatically track your OpenAI calls.
+  </Card>
+  <Card title="User Tracking" icon="users" href="/docs/features/users">
+    Identify your users.
+  </Card>
+  <Card title="Tagging" icon="tags" href="/docs/features/tags">
+    Segment your queries with tags.
+  </Card>
+  <Card
+    title="Manual Integration"
+    icon="code"
+    href="/docs/integrations/python/manual"
+  >
+    Learn how to use track_event().
+  </Card>
+  <Card title="Agents & Tools" icon="robot" href="/docs/features/observability">
+    Setup tracing by tracking agents & tools.
+  </Card>
+  <Card
+    title="API Reference"
+    icon="terminal"
+    href="/api-reference/introduction"
+  >
+    Full list of methods and classes.
+  </Card>
+  <Card
+    title="Examples"
+    icon="github"
+    href="https://github.com/lunary-ai/lunary-py/tree/main/examples"
+  >
+    Find examples of usage on GitHub.
+  </Card>
+</CardGroup>

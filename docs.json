@@ -65,7 +65,15 @@
           },
           {
             "group": "Features",
-            "pages": []
+            "pages": [
+              "docs/features/observability",
+              "docs/features/conversations",
+              "docs/features/prompts",
+              "docs/features/classification",
+              "docs/features/tags",
+              "docs/features/users",
+              "docs/features/feedback"
+            ]
           },
           {
             "group": "More",
