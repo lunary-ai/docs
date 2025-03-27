@@ -1,0 +1,70 @@
+---
+title: Python SDK Installation
+sidebarTitle: Installation
+---
+
+Please use Python version 3.10 or higher to ensure compatibility.
+
+```bash
+pip install lunary
+```
+
+## Setup
+
+Add the `LUNARY_PUBLIC_KEY` to your environment variables.
+
+```bash
+export LUNARY_PUBLIC_KEY="PUBLIC KEY"
+```
+
+You can use dotenv to load the environment variables from a `.env` file.
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="LangChain" icon="box" href="/docs/integrations/langchain">
+    Usage with LangChain.
+  </Card>
+  <Card
+    title="OpenAI"
+    icon="microchip-ai"
+    href="/docs/integrations/python/openai"
+  >
+    Automatically track your OpenAI calls.
+  </Card>
+  <Card title="User Tracking" icon="users" href="/docs/features/users">
+    Identify your users.
+  </Card>
+  <Card title="Tagging" icon="tags" href="/docs/features/tags">
+    Segment your queries with tags.
+  </Card>
+  <Card
+    title="Manual Integration"
+    icon="code"
+    href="/docs/integrations/python/manual"
+  >
+    Learn how to use track_event().
+  </Card>
+  <Card title="Agents & Tools" icon="robot" href="/docs/features/observability">
+    Setup tracing by tracking agents & tools.
+  </Card>
+  <Card
+    title="API Reference"
+    icon="terminal"
+    href="/api-reference/introduction"
+  >
+    Full list of methods and classes.
+  </Card>
+  <Card
+    title="Examples"
+    icon="github"
+    href="https://github.com/lunary-ai/lunary-py/tree/main/examples"
+  >
+    Find examples of usage on GitHub.
+  </Card>
+</CardGroup>

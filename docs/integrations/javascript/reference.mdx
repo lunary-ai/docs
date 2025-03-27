@@ -1,0 +1,82 @@
+---
+title: JS API Reference
+sidebar: Reference
+description: Reference documentation for the Lunary JS API.
+---
+
+# Lunary JS API Reference
+
+## Class: Lunary
+
+### Constructor
+
+| Method          | Description                         |
+| --------------- | ----------------------------------- |
+| `constructor()` | Initializes the Lunary instance. |
+
+### Methods
+
+| Method                                                         | Description                                                                                                                                  |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `init({ publicKey?: string, verbose?: boolean, apiUrl?: string })` | Initializes the Lunary with the provided options.                                                                                         |
+| `trackEvent(type: string, event: string, data: RunEvent)`      | Tracks an event with the provided type, event name, and data. The `data` parameter is of type `RunEvent`, which has the following structure: |
+
+| Property      | Description                                                                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`        | The type of the event. It can be one of the following: "log", "tool", "agent", "llm", "convo", "chain", "retriever", "embed", "chat", "convo". |
+| `event`       | The name of the event. It can be one of the following: "start", "end", "error", "info", "warn", "feedback".                                    |
+| `app`         | The ID of the app.                                                                                                                             |
+| `timestamp`   | The timestamp of the event.                                                                                                                    |
+| `userId`      | The ID of the user (optional).                                                                                                                 |
+| `userProps`   | The properties of the user (optional).                                                                                                         |
+| `parentRunId` | The ID of the parent run (optional).                                                                                                           |
+| `extra`       | Extra data (optional).                                                                                                                         |
+| `tags`        | Tags associated with the event (optional).                                                                                                     |
+| `runtime`     | The runtime of the event (optional).                                                                                                           |
+| `error`       | The error object, if any, with properties `message` and `stack` (optional).                                                                    |
+| `runId`       | The ID of the run.                                                                                                                             |
+| `input`       | The input data (optional).                                                                                                                     |
+| `output`      | The output data (optional).                                                                                                                    |
+| `tokensUsage` | The token usage data (optional).                                                                                                               |
+
+| Method | Description |
+| --- | --- |
+| `wrapAgent(func: Function, params?: WrapParams) -> Promise` | Wraps an agent's Promise to track its input, results, and any errors. Returns a Promise. |
+| `wrapTool(func: Function, params?: WrapParams) -> Promise` | Wraps a tool's Promise to track its input, results, and any errors. Returns a Promise. |
+| `wrapModel(func: Function, params?: WrapParams) -> Promise` | Wraps a model's Promise to track its input, results, and any errors. Returns a Promise. |
+| `info(message: string, extra?: any)` | Logs an informational message with optional extra data. |
+| `log(message: string, extra?: any)` | Alias for `info`. |
+| `warn(message: string, extra?: any)` | Logs a warning message with optional extra data. |
+| `error(message: string, error?: any)` | Reports any errors that occur during the conversation. |
+| `flush() -> Promise` | Ensures the event queue is flushed before exiting the program. Returns a Promise. |
+| `trackFeedback(messageId: string, feedback: cJSON)` | Tracks feedback for a specific message. |
+| `startThread() -> Thread` | Starts a new chat conversation and returns a `Thread` instance. |
+| `resumeThread(id: string) -> Thread` | Resumes a chat conversation with the given thread ID and returns the `Thread` instance. |
+
+## Class: Thread
+
+### Constructor
+
+- `constructor(id?: string)`: Initializes the Thread instance with a provided Lunary.
+
+### Methods
+
+- `trackUserMessage(text: string, props?: cJSON, customId?: string) -> string`: Tracks a new message from the user and returns the message ID.
+
+- `trackBotMessage(replyToId: string, text: string, props?: cJSON)`: Tracks a new message from the bot.
+
+## (React Specific Exports) Hooks
+
+- `useChatMonitor() -> { startThread: Function, trackUserMessage: Function, trackBotMessage: Function, trackFeedback: Function }`: A React hook that provides functions for starting a new thread, tracking user messages, tracking bot messages, and tracking feedback.
+
+- `useMonitorVercelAI(props) -> { ...props, trackFeedback: Function }`: A React hook that provides a function for tracking feedback in addition to the properties passed in.
+
+## Environment variables 
+Variable | Description
+--- | ---
+`LUNARY_PUBLIC_KEY` |  Your project's public key 
+`LUNARY_PRIVATE_KEY` |  Your project's private key 
+`LUNARY_VERBOSE` |  Enable verbose logging  
+`LUNARY_API_URL` |  Base URL for the API server. Defaults to `https://api.lunary.ai`; can be customized for self-hosting or local use.
+
+

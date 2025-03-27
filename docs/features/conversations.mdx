@@ -1,0 +1,280 @@
+---
+title: "Chats & Threads"
+sidebarTitle: "Conversations"
+icon: messages
+---
+
+Record and replay chat conversations in your chatbot app. Helps you understand where your chatbot falls short and how to improve it.
+
+Chats integrate seamlessly with traces by reconciliating messages with LLM calls and agents.
+
+![Feedback tracking](/media/docs/features/chat.png)
+
+You can record chats in the backend or directly on the frontend if it's easier for you.
+
+## Setup the SDK
+
+<CardGroup cols={2}>
+  <Card
+    title="Python"
+    icon="python"
+    href="/docs/integrations/python/installation"
+  >
+    Learn how to install the Python SDK.
+  </Card>
+  <Card
+    title="JavaScript"
+    icon="js"
+    href="/docs/integrations/javascript/installation"
+  >
+    Learn how to install the JS SDK.
+  </Card>
+</CardGroup>
+
+## Open a thread
+
+Start by opening a thread.
+
+<Tabs>
+  <Tab title="Javascript">
+  ```js
+  const thread = lunary.openThread()
+  ```
+  </Tab>
+  <Tab title="Python">
+  ```py
+  thread = lunary.open_thread()
+  ```
+  </Tab>
+</Tabs>
+
+You can resume an existing thread by passing an ID from an existing thread.
+
+<Tabs>
+<Tab title="Javascript">
+```js
+// Save `thread.id` somewhere
+const thread = lunary.openThread({
+  id: 'your-thread-id'; // Replace with your actual thread ID
+})
+```
+</Tab>
+<Tab title="Python">
+```py
+# Save `thread.id` somewhere
+existing_thread_id = 'your-thread-id'  # Replace with your actual thread ID
+thread = lunary.open_thread(existing_thread_id)
+```
+</Tab>
+</Tabs>
+
+You can also add tags to a thread by passing a object with a `tags` param:
+
+<Tabs>
+<Tab title="Javascript">
+```js
+const thread = lunary.openThread({
+  tags: ['support']
+})
+```
+</Tab>
+<Tab title="Python">
+```py
+thread = lunary.open_thread(existing_thread_id, tags=['support'])
+```
+</Tab>
+</Tabs>
+
+## Track messages
+
+Now you can track messages. The supported roles are `assistant`, `user`, `system`, & `tool`.
+
+<Tabs>
+<Tab title="Javascript">
+```js
+thread.trackMessage({
+  role: 'user',
+  content: 'Hello, please help me'
+})
+
+thread.trackMessage({
+role: 'assistant',
+content: 'Hello, how can I help you?'
+})
+
+````
+</Tab>
+<Tab title="Python">
+```py
+thread.track_message({
+  "role": "user",
+  "content": "Hello, please help me"
+})
+
+thread.track_message({
+  "role": "assistant",
+  "content": "Hello, how can I help you?"
+})
+````
+
+</Tab>
+</Tabs>
+
+## Track custom events
+
+You can track custom events that happen within your chatbot. This can include things like:
+
+- opening a document
+- clicking a button
+- submitting a form
+- user activity or inactivity
+- other events that you want to track
+
+<Tabs>
+<Tab title="Javascript">
+```js
+thread.trackEvent("event-name")
+
+// you can also track additional metadata
+thread.trackEvent("open-document", {
+documentName: "my-document.pdf",
+})
+
+````
+</Tab>
+<Tab title="Python">
+```python
+thread.track_event("event-name")
+
+# you can also use the following optional parameters
+thread.track_event("event-name", user_id="user1", user_props={"email": "hello@test.com"}, metadata={})
+````
+
+</Tab>
+</Tabs>
+
+## Capture user feedback
+
+Finally, you can track user feedback on bot replies:
+
+The ID is the same as the one returned by `trackMessage`.
+
+<Tabs>
+<Tab title="Javascript">
+```js
+const msgId = thread.trackMessage({
+  role: "assistant",
+  content: "Hope you like my answers :)"
+})
+
+lunary.trackFeedback(msgId, { thumb: "up" })
+
+````
+</Tab>
+<Tab title="Python">
+```py
+msg_id = thread.track_message({
+  "role": "assistant",
+  "content": "Hope you like my answers :)"
+})
+
+lunary.track_feedback(msg_id, { "thumb": "up" })
+````
+
+</Tab>
+</Tabs>
+
+To remove feedback, pass `null` as the feedback data.
+
+<Tabs>
+<Tab title="Javascript">
+```js
+lunary.trackFeedback(msgId, { thumb: null })
+```
+</Tab>
+<Tab title="Python">
+```py
+lunary.track_feedback(msg_id, { "thumb": None })
+```
+</Tab>
+</Tabs>
+
+## Reconciliate with LLM calls & agents
+
+To take full advantage of Lunary's tracing capabilities, you can reconcile your LLM and agents runs with the messages.
+
+We will automatically reconciliate messages with runs.
+
+<Tabs>
+<Tab title="Javascript">
+
+```js
+const msgId = thread.trackMessage({ role: "user", content: "Hello!" });
+
+const res = await openai.chat.completions
+  .create({
+    model: "gpt-4o",
+    temperature: 1,
+    messages: [message],
+  })
+  .setParent(msgId);
+
+thread.trackMessage({
+  role: "assistant",
+  content: res.choices[0].message.content,
+});
+```
+
+</Tab>
+<Tab title="Python">
+
+```python
+msg_id = thread.track_message({ "role": "user", "content": "Hello!" })
+
+chat_completion = client.chat.completions.create(
+    messages=[message],
+    model="gpt-4o",
+    parent=msg_id
+)
+
+thread.track_message(
+    {"role": "assistant", "content": chat_completion.choices[0].message.content})
+```
+
+</Tab>
+</Tabs>
+
+If you're using LangChain or agents behind your chatbot, you can inject the current message id into context as a parent:
+
+<Tabs>
+<Tab title="Javascript">
+
+```js
+const msgId = thread.trackMessage({ role: "user", content: "Hello!" });
+
+// In your backend, inject the message id into the context
+
+const agent = lunary.wrapAgent(function ChatbotAgent(query) {
+  // your custom code...
+});
+
+await agent("Hello!").setParent(msgId);
+```
+
+</Tab>
+<Tab title="Python">
+
+```python
+msg_id = thread.track_message({ "role": "user", "content": "Hello!" })
+
+# In your backend, inject the message id into the context
+
+with lunary.parent(msg_id):
+    # your custom code...
+    pass
+```
+
+</Tab>
+</Tabs>
+
+Note that _it's safe_ to pass the message ID from your frontend to your backend, if you're tracking chats directly on the frontend for example.

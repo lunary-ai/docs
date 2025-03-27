@@ -21,6 +21,88 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Lunary",
+            "pages": ["docs/lunary/index", "docs/lunary/github"]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              {
+                "group": "Python",
+                "icon": "python",
+                "pages": [
+                  "/docs/integrations/python/installation",
+                  "/docs/integrations/python/openai",
+                  "/docs/integrations/python/azure-openai",
+                  "/docs/integrations/python/manual",
+                  "/docs/integrations/python/reference"
+                ]
+              },
+              {
+                "group": "Javascript",
+                "icon": "js",
+                "pages": [
+                  "/docs/integrations/javascript/installation",
+                  "/docs/integrations/javascript/openai",
+                  "/docs/integrations/javascript/anthropic",
+                  "/docs/integrations/javascript/azure-openai",
+                  "/docs/integrations/javascript/react",
+                  "/docs/integrations/javascript/custom-model",
+                  "/docs/integrations/javascript/manual",
+                  "/docs/integrations/javascript/serverless"
+                ]
+              },
+              "/docs/integrations/langchain",
+              "/docs/integrations/ollama",
+              "/docs/integrations/litellm",
+              "/docs/integrations/ibm",
+              "/docs/integrations/flowise",
+              "docs/integrations/custom"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "docs/features/observability",
+              "docs/features/conversations",
+              "docs/features/prompts",
+              "docs/features/classification",
+              "docs/features/tags",
+              "docs/features/users",
+              "docs/features/feedback"
+            ]
+          },
+          {
+            "group": "More",
+            "pages": [
+              {
+                "group": "Security",
+                "icon": "shield",
+                "pages": [
+                  "docs/more/security/introduction",
+                  "docs/more/security/CCPA",
+                  "docs/more/security/GDPR"
+                ]
+              },
+              "docs/more/concepts",
+              {
+                "group": "Self-Hosting",
+                "icon": "database",
+                "pages": [
+                  "docs/more/self-hosting/docker",
+                  "docs/more/self-hosting/docker-compose",
+                  "docs/more/self-hosting/kubernetes"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+
+      {
         "openapi": "https://api.lunary.ai/v1/openapi",
         "tab": "API Reference",
         "groups": [
