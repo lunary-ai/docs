@@ -17,6 +17,11 @@
     },
     "openapi": "https://api.lunary.ai/v1/openapi"
   },
+  "integrations": {
+    "intercom": {
+      "appId": "pv95fmzm"
+    }
+  },
   "favicon": "/favicon.png",
   "navigation": {
     "tabs": [
