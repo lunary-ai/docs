@@ -62,7 +62,7 @@
               },
               {
                 "group": "OpenTelemetry",
-                "icon": "opentelemetry",
+                "icon": "telescope",
                 "pages": [
                   "/docs/integrations/opentelemetry/overview",
                   "/docs/integrations/opentelemetry/otel-python",
