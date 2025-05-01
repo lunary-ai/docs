@@ -60,6 +60,15 @@
                   "/docs/integrations/javascript/serverless"
                 ]
               },
+              {
+                "group": "OpenTelemetry",
+                "icon": "opentelemetry",
+                "pages": [
+                  "/docs/integrations/opentelemetry/overview",
+                  "/docs/integrations/opentelemetry/otel-python",
+                  "/docs/integrations/opentelemetry/otel-mapping"
+                ]
+              },
               "/docs/integrations/langchain",
               "/docs/integrations/ollama",
               "/docs/integrations/litellm",
