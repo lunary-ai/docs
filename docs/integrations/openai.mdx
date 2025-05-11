@@ -1,0 +1,50 @@
+---
+title: OpenAI integration
+sidebarTitle: OpenAI
+---
+
+Our Python SDK includes automatic integration with OpenAI's module.
+
+<Steps>
+<Step n='1' title="Setup the SDK">
+  <CardGroup cols={1}>
+    <Card title="Python" icon="python" href="/docs/integrations/python/installation">
+      Learn how to set up the Python SDK.
+    </Card>
+  </CardGroup>
+</Step>
+<Step n='2' title='Monitor OpenAI'>
+
+With our SDKs, tracking OpenAI calls is super simple.
+
+```py
+from openai import OpenAI
+import lunary
+
+client = OpenAI()
+
+lunary.monitor(client)  # This line sets up monitoring for all calls made through the 'openai' module
+
+chat_completion = client.chat.completions.create(
+  model="gpt-4o",
+  messages=[{"role": "user", "content": "Hello world"}]
+)
+```
+
+</Step>
+<Step n='3' title='Tag requests and identify users'>
+
+You can now tag requests and identify users.
+
+```py
+chat_completion = client.chat.completions.create(
+  model="gpt-4o",
+  user_id="user_123",  # Optional: user ID
+  user_props={"name": "John Doe"},  # Optional: user properties
+  tags=["chat", "support"],  # Optional: add tags
+  messages=[{"role": "user", "content": "Hello world"}]
+)
+```
+
+</Step>
+</Steps>
