@@ -125,7 +125,7 @@
         "groups": [
           {
             "group": "Getting Started",
-            "pages": ["api-reference/introduction"]
+            "pages": ["docs/api-reference/introduction"]
           }
         ]
       }
