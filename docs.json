@@ -105,6 +105,7 @@
                 ]
               },
               "docs/more/concepts",
+              "docs/more/bigquery",
               {
                 "group": "Self-Hosting",
                 "icon": "database",
