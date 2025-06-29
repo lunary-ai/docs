@@ -86,6 +86,7 @@
               "docs/features/observability",
               "docs/features/conversations",
               "docs/features/prompts",
+              "docs/features/prompt-playground",
               "docs/features/classification",
               "docs/features/tags",
               "docs/features/users",
