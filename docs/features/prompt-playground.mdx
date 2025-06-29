@@ -1,0 +1,189 @@
+---
+title: "Prompt Playground"
+sidebarTitle: "Playground"
+icon: play
+---
+
+The Prompt Playground is an interactive environment for testing and refining your prompts. It provides a powerful interface to experiment with different prompt variations, test against various models, and even run prompts against custom API endpoints.
+
+## Overview
+
+The Prompt Playground allows you to:
+
+- Test prompts with different LLM providers (OpenAI, Anthropic, etc.)
+- Compare outputs across multiple models
+- Experiment with parameters like temperature and max tokens
+- Test prompts against your own custom API endpoints
+- Save and collaborate on prompt experiments with team members
+- Create draft versions without affecting production (RBAC ensures only authorized users can deploy)
+
+
+![Image 1](/media/docs/prompt-playground/1.png)
+
+
+## Variables and Dynamic Content
+
+The Playground supports dynamic variables in your prompts:
+
+1. Define variables using double curly braces: `{{variable_name}}`
+2. Enter test values in the Variables section
+3. See how different variable values affect the output
+
+![Screenshot: Using variables in prompts](/media/docs/prompt-playground/variables.png)
+
+## Saving and Collaboration
+
+The Playground supports team collaboration with built-in versioning and role-based access control:
+
+### Creating Draft Versions
+
+1. Click "Save as Draft" to save your experiments without affecting production
+2. Add version notes to document your changes and findings
+3. Share the draft with team members for review and feedback
+
+### Collaboration Features
+
+- **Draft Sharing**: Team members can view and test your draft prompts
+- **Notepad**: Leave feedback on specific prompt versions via the notepad
+- **Role-Based Access**: 
+  - Developers and prompt engineers can create and edit drafts
+  - Only authorized users (with deployment permissions) can promote drafts to production
+  - Viewers can test prompts but cannot modify them
+
+
+
+## Testing with Custom Endpoints
+
+One of the most powerful features of the Prompt Playground is the ability to test prompts against your own custom API endpoints. This is particularly useful for:
+
+- **RAG (Retrieval-Augmented Generation) systems**
+- **Custom AI applications** with proprietary logic
+- **API wrappers** that combine multiple AI services
+- **Complex systems** that include more components than just an LLM
+
+### Setting Up Custom Endpoints
+
+To configure a custom endpoint:
+
+1. Toggle the **Run Mode** from "Model Provider" to "Custom Endpoint"
+2. Click "Configure Endpoints" to set up your API endpoints
+
+![Screenshot: Switching to Custom Endpoint mode](/docs/media/prompt-playground/2.png)
+
+### Endpoint Configuration
+
+When creating an endpoint, you'll need to provide:
+
+- **Name**: A descriptive name for your endpoint
+- **URL**: The full URL of your API endpoint
+- **Authentication**: Choose from:
+  - Bearer Token (for OAuth/JWT)
+  - API Key (with custom header name)
+  - Basic Authentication
+  - No authentication
+- **Custom Headers**: Additional headers to include in requests
+- **Default Payload**: Base payload that will be merged with prompt data
+
+![Screenshot: Endpoint configuration dialog](/media/docs/prompt-playground/3.png)
+
+### Request Format
+
+When you run a prompt against a custom endpoint, Lunary sends an HTTP POST request with the following JSON payload:
+
+```json
+{
+  "messages": [
+    {"role": "system", "content": "You are a helpful assistant"},
+    {"role": "user", "content": "What is the weather like?"}
+  ],
+  "model_params": {
+    "temperature": 0.7,
+    "max_tokens": 1000,
+    "model": "gpt-4"
+  },
+  "variables": {
+    "location": "San Francisco",
+    "user_id": "12345"
+  }
+  // custom payload data will be merged here 
+  "custom_data": {
+    "example_key": "example_value"
+  }
+}
+```
+
+Your endpoint should process this request and return a response. Lunary supports various response formats:
+- Simple text responses
+- OpenAI-compatible message arrays
+- Custom JSON structures
+
+![Screenshot: Example request payload](/media/docs/prompt-playground/4.png)
+
+### Use Case Examples
+
+#### RAG System Integration
+
+Test how your prompts work with your retrieval-augmented generation system:
+
+```javascript
+// Example RAG endpoint that enriches prompts with context
+app.post('/api/rag-chat', async (req, res) => {
+  const { content, variables } = req.body;
+  
+  // Extract the user's query
+  const userQuery = content[content.length - 1].content;
+  
+  // Search your knowledge base
+  const relevantDocs = await vectorDB.search(userQuery, {
+    filter: { user_id: variables.user_id },
+    limit: 5
+  });
+  
+  // Augment the prompt with retrieved context
+  const augmentedContent = [
+    ...content.slice(0, -1),
+    {
+      role: "system",
+      content: `Relevant context:\n${relevantDocs.map(d => d.text).join('\n\n')}`
+    },
+    content[content.length - 1]
+  ];
+  
+  // Generate response with your LLM
+  const response = await llm.generate({
+    ...req.body,
+    content: augmentedContent
+  });
+  
+  res.json({ content: response.text });
+});
+```
+
+#### Custom Agent Testing
+
+Test prompts against AI agents with tool access or custom logic:
+
+```python
+# Example agent endpoint with tool usage
+@app.post("/api/agent")
+async def agent_endpoint(request: dict):
+    prompt = request["content"]
+    variables = request["variables"]
+    
+    # Parse intent and determine required tools
+    intent = parse_intent(prompt[-1]["content"])
+    
+    if intent.requires_search:
+        search_results = await web_search(intent.query)
+        context = format_search_results(search_results)
+        prompt.append({"role": "system", "content": f"Search results: {context}"})
+    
+    if intent.requires_calculation:
+        calc_result = await calculator(intent.expression)
+        prompt.append({"role": "system", "content": f"Calculation: {calc_result}"})
+    
+    # Generate final response
+    response = await generate_response(prompt, variables)
+    
+    return {"content": response, "tools_used": intent.tools}
+```
