@@ -31,7 +31,7 @@ import logfire
 from pydantic import BaseModel
 from pydantic_ai import Agent
 
-os.environ["OTEL_EXPORTER_OTLP_ENDPOINT"] = "https://localhost:3333"
+os.environ["OTEL_EXPORTER_OTLP_ENDPOINT"] = "https://api.lunary.ai"
 os.environ["OTEL_EXPORTER_OTLP_HEADERS"] = f"Authorization=Bearer {os.environ['LUNARY_PRIVATE_KEY']}"
 
 logfire.configure(send_to_logfire=False)
