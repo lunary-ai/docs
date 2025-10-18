@@ -85,6 +85,7 @@
             "group": "Features",
             "pages": [
               "docs/features/observability",
+              "docs/features/product-analytics",
               "docs/features/conversations",
               "docs/features/prompts",
               "docs/features/prompt-playground",

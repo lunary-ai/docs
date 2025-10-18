@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/docs",
+      "destination": "https://lunary.mintlify.app/docs"
+    },
+    {
+      "source": "/docs/:match*",
+      "destination": "https://lunary.mintlify.app/docs/:match*"
+    }
+  ]
+}
