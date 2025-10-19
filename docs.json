@@ -29,8 +29,8 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "Lunary",
-            "pages": ["docs/lunary/index", "docs/lunary/github"]
+            "group": "Get Started",
+            "pages": ["docs/get-started/index", "docs/get-started/github"]
           },
           {
             "group": "Integrations",
