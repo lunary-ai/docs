@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- Documentation lives in `docs/` with category folders (`features/`, `integrations/`, `api-reference/`, `lunary/`, `more/`); add new `.mdx` files in the matching folder.
+- Documentation lives in `docs/` with category folders (`features/`, `integrations/`, `api/`, `lunary/`, `more/`); add new `.mdx` files in the matching folder.
 - Global navigation stays in `docs.json`; update routes there whenever you add, rename, or reorder pages.
 - Store shared assets in `media/docs/` and brand visuals in `logo/`; keep filenames kebab-case and reference them via absolute paths such as `/media/docs/features/analytics.png`.
 

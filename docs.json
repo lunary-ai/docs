@@ -15,7 +15,10 @@
     "examples": {
       "languages": ["bash"]
     },
-    "openapi": "https://api.lunary.ai/v1/openapi"
+    "openapi": {
+      "source": "https://api.lunary.ai/v1/openapi",
+      "directory": "docs/api"
+    }
   },
   "integrations": {
     "intercom": {
@@ -125,12 +128,15 @@
       },
 
       {
-        "openapi": "https://api.lunary.ai/v1/openapi",
+        "openapi": {
+          "source": "https://api.lunary.ai/v1/openapi",
+          "directory": "docs/api"
+        },
         "tab": "API Reference",
         "groups": [
           {
             "group": "Getting Started",
-            "pages": ["docs/api-reference/introduction"]
+            "pages": ["docs/api/introduction"]
           }
         ]
       }
